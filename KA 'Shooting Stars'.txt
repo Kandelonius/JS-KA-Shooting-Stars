@@ -1,0 +1,64 @@
+var xPos = 0; // sets initial x position
+//var yPos = -50; // sets initial y position
+var constantY = 150;
+var drawBuildings = function(){
+    fill(0, 0, 0); // building color
+    //buildings
+    rect(275, 250, 45, 100);
+    rect(175, 260, 35, 90);
+    rect(225, 280, 25, 70);
+    rect(75, 300, 44, 50);
+    rect(343, 230, 45, 120);
+    
+    fill(79, 79, 79); // road color
+    rect(0,constantY + 200, 400, 4); // road
+    fill(17, 107, 29); // foreground color
+    rect(0,constantY + 204, 400, 45); // forground
+};
+var clouds = function(){
+    fill(255, 255, 255); // cloud color
+    noStroke();
+    // clouds
+    ellipse(xPos/3 + 237, constantY, 45, 25);
+    ellipse(xPos/3 + 243, constantY - 15, 45, 25);
+    ellipse(xPos/3 + 250, constantY + 15, 45, 25);
+    ellipse(xPos/3 + 225, constantY + 20, 45, 25);
+    ellipse(xPos/3 + 270, constantY - 5, 45, 25);
+    rect(0, 0, 400, 50);
+    ellipse(15, 53, 40, 20);
+    ellipse(73, 53, 80, 30);
+    ellipse(172, 53, 80, 40);
+    ellipse(120, 53, 40, 60);
+    ellipse(228, 61, 40, 40);
+    ellipse(284, 47, 80, 40);
+    ellipse(361, 47, 80, 64);
+    
+};
+var transport = function(){ // plane function
+    fill(255, 255, 255); // plane color
+    rect((239 - xPos/2), constantY + 3, 10, 5); // plane
+    if(xPos%15){
+        fill(29, 40, 115); // plane light off
+        rect((246 - xPos/2), constantY, 4, 3);
+    }else{
+        fill(255, 0, 0); // plane light on
+        rect((246 - xPos/2), constantY, 4, 3);
+    }
+    fill(68, 250, 71); // car color
+    rect(xPos/3 + 233, constantY + 196, 5, 5); // car
+    fill(252, 252, 252); // car light color
+    rect(xPos/3 + 238, constantY + 198, 2, 3); // car light
+};
+
+draw = function() { // animation function
+    background(29, 40, 115); // background color
+    
+    image(getImage("space/star"), xPos, xPos/2 + 100, 15, 15); // shooting star
+    image(getImage("space/beetleship"), 2/3*xPos + 75, -xPos + 300, 20, 20); // spaceship
+    drawBuildings();
+    transport();
+    clouds();
+    xPos++;
+    //yPos++;
+};
+
